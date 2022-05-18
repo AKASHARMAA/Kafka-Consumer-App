@@ -1,4 +1,0 @@
-FROM openjdk:11
-COPY target/Kafka-Consumer-App-0.0.1-SNAPSHOT.jar Kafka-Consumer-App-0.0.1-SNAPSHOT.jar
-
-ENTRYPOINT [ "java", "-jar", "Kafka-Consumer-App-0.0.1-SNAPSHOT.jar" ]
