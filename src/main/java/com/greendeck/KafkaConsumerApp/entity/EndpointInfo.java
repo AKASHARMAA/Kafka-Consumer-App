@@ -3,6 +3,12 @@ package com.greendeck.KafkaConsumerApp.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * 
+ * All the endpoints will be converted as this class and saved into the database
+ * 
+ */
+
 @Entity
 public class EndpointInfo {
 
