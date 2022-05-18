@@ -14,7 +14,7 @@ import com.greendeck.KafkaConsumerApp.repo.EndpointRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParser;
-import org.springframework.boot.json.JsonParserFactory;
+import org.springframework.boot.json.JsonParserFactory;	
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.PartitionOffset;
 import org.springframework.kafka.annotation.TopicPartition;
@@ -65,6 +65,8 @@ public class KafkaListenerClass {
 		}
 		
 	}
+
+	private int counter = 0;
 	
 	
     @KafkaListener(topicPartitions = {
@@ -78,7 +80,8 @@ public class KafkaListenerClass {
     	try {
 			EndpointInfo endpointInfo = mapper.readValue(data, EndpointInfo.class);
 			if(allowedStates.contains(endpointInfo.getEvent_state())) {
-
+				// this is a counter for number of records saved in the database
+				System.out.println(counter ++);
 				// saving endpointInfo object into db
 				endpointRepository.save(endpointInfo);
 				
